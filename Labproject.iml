@@ -5,6 +5,8 @@
     <exclude-output />
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/labyrinth/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/labyrinth/node_modules" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
   </component>

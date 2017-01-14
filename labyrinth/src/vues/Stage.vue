@@ -2,8 +2,6 @@
     <canvas id="game" width="800" height="600"></canvas>
 </template>
 
-<script src="thirdparty/easeljs-0.8.2.min.js"></script>
-
 <script>
 export  default {
     name: 'stage',
@@ -19,7 +17,7 @@ var initGrid = function (){
     let stage = new createjs.Stage("game");
     stage.regX=0.5; stage.regY=0.5;
 
-createjs.Shape.prototype.snapToPixel = true;
+    createjs.Shape.prototype.snapToPixel = true;
      var container = new createjs.Container();
 
     for (let  i=0; i<nbCells +1; i++){

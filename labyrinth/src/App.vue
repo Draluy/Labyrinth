@@ -1,12 +1,12 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <h1>{{ msg }}</h1>
-    <stage></stage>
+  <div id="app" class="pure-g">
+    <div class="pure-u-5-5">
+      <img src="./assets/logo.png">
+      <h1>{{ msg }}</h1>
+      <stage></stage>
+    </div>
   </div>
 </template>
-
-
 
 <script>
 import Stage from './vues/Stage.vue';

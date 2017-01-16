@@ -1,8 +1,11 @@
 <template>
-    <canvas id="game" width="800" height="600"></canvas>
+    <canvas id="game" width="800" height="600" v-update-player></canvas>
 </template>
 
 <script>
+import Knight from './Knight';
+import config from '../Config';
+
 export  default {
     name: 'stage',
     mounted: function () {
@@ -11,9 +14,10 @@ export  default {
 };
 
 var initGrid = function (){
-    let nbCells = 9;
-    let cellSize = 40;
-    let gridColor = "rgba(0,0,0,1)";
+    let nbCells = config.grid.nbCells;
+    let cellSize = config.grid.cellSize;
+    let gridColor = config.grid.gridColor;
+    
     let stage = new createjs.Stage("game");
     stage.regX=0.5; stage.regY=0.5;
 
@@ -24,7 +28,6 @@ var initGrid = function (){
         let line = new createjs.Shape();
         line.graphics.setStrokeStyle(1);
         line.graphics.beginStroke(gridColor);
-        //line.snapToPixel = true;
         line.graphics.moveTo(i * cellSize, 0);
         line.graphics.lineTo(i * cellSize, nbCells * cellSize);
         line.graphics.endStroke();

@@ -1,4 +1,29 @@
-export default {
-    name: 'knight name!',
-    sprites: "../assets/knight/GHKnight.png"
+class Knight{
+    constructor (){
+        this.spriteSheet = new createjs.SpriteSheet(spriteSheetDefinition);
+        this.animation = new createjs.Sprite(this.spriteSheet, "run");
+    }
+
+    /**
+     * Coordinates in pixels of the position
+     * @param x
+     * @param y
+     */
+    setPosition (x, y) {
+        console.log("x="+x+" y="+y);
+        this.animation.x = x;
+        this.animation.y = y;
+    }
 };
+
+let spriteSheetDefinition  = {
+    images: [require("../assets/knight/GHKnight.png")],
+    frames: {width:36, height:50},
+    animations: {
+        stand:0,
+        run:[1,5],
+        jump:[6,8,"run"]
+    }
+};
+
+export default Knight;

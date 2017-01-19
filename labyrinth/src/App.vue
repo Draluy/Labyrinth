@@ -3,13 +3,13 @@
     <div class="pure-u-5-5">
       <img src="./assets/logo.png">
       <h1>{{ msg }}</h1>
-      <stage></stage>
+      <game></game>
     </div>
   </div>
 </template>
 
 <script>
-import Stage from './vues/Stage.vue';
+import Game from './vues/Game.vue';
 
 export default {
   name: 'labyrinth',
@@ -18,7 +18,7 @@ export default {
       msg: 'The Labyrinth'
     }
   },
-  components: { Stage }
+  components: { Game }
 }
 
 
@@ -29,6 +29,5 @@ img {
     height: auto;
     width: 10vw;
 }
-
 
 </style>

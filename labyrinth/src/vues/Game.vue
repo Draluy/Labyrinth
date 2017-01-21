@@ -1,5 +1,5 @@
 <template>
-    <canvas id="game" width="1980px" height="1080px" @click="handleClick"></canvas>
+    <canvas id="game" width="800" height="600" @click="handleClick"></canvas>
 </template>
 
 <script>
@@ -15,16 +15,15 @@ export  default {
     name: 'game',
     mounted: function () {
         this.stage = new Stage();
-        this.stage.render();
     },
     methods: {
         handleClick(event){
             //process input
             let canvas = document.querySelector("#game");
-            let {x,y} = CanvasUtil.getCursorPosition(canvas, event);
+            let {x,y} = CanvasUtil.getCorrectedCursorPosition(canvas, event);
 
             //update
-            this.stage.getKnight().setPosition(x, y);
+            this.stage.updatePlayerPositionFromClick(x, y);
 
             //render
             this.stage.render();
@@ -37,6 +36,7 @@ export  default {
 <style>
 canvas {
     border: 1px solid black;
+    width:80vw;
     image-rendering: optimizeSpeed;
     image-rendering: -moz-crisp-edges;
     image-rendering: -webkit-optimize-contrast;

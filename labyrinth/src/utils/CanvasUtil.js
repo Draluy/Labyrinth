@@ -4,11 +4,19 @@
 
 
 class CanvasUtil{
-    static getCursorPosition(canvas, event)
+    static getAbsoluteCursorPosition(canvas, event)
     {
-        var rect = canvas.getBoundingClientRect();
-        var x = event.clientX - rect.left;
-        var y = event.clientY - rect.top;
+        let rect = canvas.getBoundingClientRect();
+        let x = event.clientX - rect.left;
+        let y = event.clientY - rect.top;
+        return {"x" : x, "y" : y};
+    }
+
+    static getCorrectedCursorPosition(canvas, event)
+    {
+        let {x,y} = CanvasUtil.getAbsoluteCursorPosition(canvas, event);
+        x = x * canvas.width / canvas.clientWidth;
+        y = y * canvas.height / canvas.clientHeight;
         return {"x" : x, "y" : y};
     }
 }

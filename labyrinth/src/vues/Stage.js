@@ -5,54 +5,29 @@
  */
 
 
-import config from '../Config';
+import GridService from '../services/GridService';
 import Knight from './Knight.js';
+
 
 let player = new Knight();
 
 class Stage {
     constructor(){
         this.stage = new createjs.Stage("game");
-        this.stage.regX=0.5; this.stage.regY=0.5;
-
-        this.initGrid();
+        //this.stage.regX=0.5; this.stage.regY=0.5;
+        this.gridService = new GridService();
+        this.gridService.drawGrid(this.stage);
         this.stage.addChild(player.animation);
-    }
-
-    initGrid () {
-        let nbCells = config.grid.nbCells;
-        let cellSize = config.grid.cellSize;
-        let gridColor = config.grid.gridColor;
-
-        createjs.Shape.prototype.snapToPixel = true;
-        var container = new createjs.Container();
-
-        for (let  i=0; i<nbCells +1; i++){
-            let line = new createjs.Shape();
-            line.graphics.setStrokeStyle(1);
-            line.graphics.beginStroke(gridColor);
-            line.graphics.moveTo(i * cellSize, 0);
-            line.graphics.lineTo(i * cellSize, nbCells * cellSize);
-            line.graphics.endStroke();
-            container.addChild(line);
-
-            line = new createjs.Shape();
-            line.graphics.setStrokeStyle(1);
-            line.graphics.beginStroke(gridColor);
-            line.graphics.moveTo( 0, i * cellSize);
-            line.graphics.lineTo( nbCells * cellSize, i * cellSize);
-            line.graphics.endStroke();
-            container.addChild(line);
-        }
-        this.stage.addChild(container);
+        this.stage.update();
     }
 
     render (){
         this.stage.update();
     }
 
-    getKnight (){
-       return player;
+    updatePlayerPositionFromClick (mouseX, mouseY){
+       let {x,y} = this.gridService.getCellCoords(mouseX,mouseY);
+       player.setPosition(x,y);
     }
 }
 

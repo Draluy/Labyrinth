@@ -7,7 +7,7 @@
 
 import GridService from '../services/GridService';
 import Knight from './Knight.js';
-
+import config from '../Config';
 
 let player = new Knight();
 
@@ -27,7 +27,11 @@ class Stage {
 
     updatePlayerPositionFromClick (mouseX, mouseY){
        let {x,y} = this.gridService.getCellCoords(mouseX,mouseY);
-       player.setPosition(x,y);
+       console.log("x = "+x+" y="+y+" config.grid.nbCells="+config.grid.nbCells);
+       let labSize = config.grid.nbCells * config.grid.cellSize;
+       if (x <  labSize && y < labSize) {
+           player.setPosition(x, y);
+       }
     }
 }
 

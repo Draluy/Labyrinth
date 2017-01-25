@@ -38,6 +38,17 @@ class GridService{
         }
         stage.addChild(container);
     }
+
+    drawLabyrinth (stage, labyrinth){
+        let cells = labyrinth.generateLabyrinth();
+
+        for (var i = 0; i < cells.length; i++) {
+            let cell = cells[i];
+            var graphics = new createjs.Graphics().beginFill("#ff0000").drawRect(cell.x * config.grid.cellSize, cell.y * config.grid.cellSize, config.grid.cellSize, config.grid.cellSize);
+            stage.addChild(new createjs.Shape(graphics));
+        }
+        stage.update();
+    }
 }
 
 export default GridService;

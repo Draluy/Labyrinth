@@ -49,6 +49,10 @@ class GridService{
         }
         stage.update();
     }
+
+    cellIsNeighbouring(position, coords) {
+        return Math.abs(position.x - coords.x) <= cellSize    && Math.abs(position.y - coords.y) <= cellSize ;
+    }
 }
 
 export default GridService;

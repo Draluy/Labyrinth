@@ -5,6 +5,7 @@
       <h1>{{ msg }}</h1>
       <game></game>
     </div>
+      <el-button>Default Button</el-button>
   </div>
 </template>
 

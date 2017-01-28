@@ -1,7 +1,7 @@
 /**
  * Created by redeyed on 1/23/17.
  */
-import Room from "./Room";
+import Room from "./Tile";
 import config from "../Config";
 
 class Labyrinth {

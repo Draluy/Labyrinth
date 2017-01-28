@@ -28,13 +28,16 @@ class Stage {
     }
 
     updatePlayerPositionFromClick(mouseX, mouseY) {
-        let coords = this.gridService.getCellCoords(mouseX, mouseY);
+        let cellCoords = this.gridService.getCellCoords(mouseX, mouseY);
+        let coords = {"x":cellCoords.x * config.grid.cellSize, "y":cellCoords.y * config.grid.cellSize};
         let labSize = config.grid.nbCells * config.grid.cellSize;
+
         if (coords.x < labSize && coords.y < labSize) { //check grid boundaries
             if (this.gridService.cellIsNeighbouring(player.position, coords) && this.labyrinth.hasCell(coords)) {
                 player.position = {"x": coords.x, "y": coords.y};
             }
         }
+
     }
 }
 

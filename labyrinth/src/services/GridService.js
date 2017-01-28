@@ -13,7 +13,7 @@ class GridService{
     constructor(){}
 
     getCellCoords (x,y){
-        return {"x" : Math.floor(x/cellSize) * cellSize, "y" : Math.floor(y/cellSize) *cellSize};
+        return {"x" : Math.floor(x/cellSize) , "y" : Math.floor(y/cellSize)};
     }
 
     drawGrid (stage) {
@@ -52,6 +52,15 @@ class GridService{
 
     cellIsNeighbouring(position, coords) {
         return Math.abs(position.x - coords.x) <= cellSize    && Math.abs(position.y - coords.y) <= cellSize ;
+    }
+
+    findCellFromCoords(coords, labyrinth) {
+        for(let cell of labyrinth.rooms){
+            if (cell.x === coords.x && cell.y === coords.y){
+                return cell;
+            }
+        }
+        return null;
     }
 }
 

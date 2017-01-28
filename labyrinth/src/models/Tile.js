@@ -4,15 +4,15 @@
  */
 
 class Room {
+
+    /**
+     * Position of the cell in the grid
+     * @param x The nth cell from the left
+     * @param y The nth cell from the top
+     */
     constructor(x, y) {
         this.x = x;
         this.y = y;
-
-        this.up = null;
-        this.left = null;
-        this.top = null;
-        this.bottom = null;
-
         this.isStart = false;
         this.isEnd = false;
     }

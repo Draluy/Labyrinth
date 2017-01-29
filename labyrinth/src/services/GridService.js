@@ -3,6 +3,7 @@
  */
 
 import config from '../Config'
+import Point from "../models/Point"
 
 let nbCells = config.grid.nbCells;
 let cellSize = config.grid.cellSize;
@@ -13,7 +14,7 @@ class GridService{
     constructor(){}
 
     getCellCoords (x,y){
-        return {"x" : Math.floor(x/cellSize) , "y" : Math.floor(y/cellSize)};
+        return new Point(Math.floor(x/cellSize),Math.floor(y/cellSize));
     }
 
     drawGrid (stage) {

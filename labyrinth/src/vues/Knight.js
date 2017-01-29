@@ -1,3 +1,5 @@
+import Point from "../models/Point"
+
 class Knight {
     constructor() {
         this.spriteSheet = new createjs.SpriteSheet(spriteSheetDefinition);
@@ -15,7 +17,7 @@ class Knight {
     }
 
     get position() {
-        return {"x": this.animation.x, "y": this.animation.y};
+        return new Point(this.animation.x, this.animation.y);
     }
 }
 ;

@@ -4,7 +4,7 @@
  */
 
 
-class FloodPathingService {
+export class FloodPathingService {
     constructor(labyrinth) {
         this.labyrinth = labyrinth;
     }
@@ -46,4 +46,3 @@ function getAdjacentCells(tile, labyrinth) {
 }
 
 
-export default FloodPathingService;

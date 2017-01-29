@@ -52,7 +52,8 @@ class GridService{
     }
 
     cellIsNeighbouring(position, coords) {
-        return Math.abs(position.x - coords.x) <= cellSize    && Math.abs(position.y - coords.y) <= cellSize ;
+        let isNeighbour= Math.abs(position.x / cellSize - coords.x) <= 1 && Math.abs(position.y / cellSize - coords.y) <= 1 ;
+        return isNeighbour;
     }
 
     findCellFromCoords(coords, labyrinth) {
@@ -66,3 +67,24 @@ class GridService{
 }
 
 export default GridService;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

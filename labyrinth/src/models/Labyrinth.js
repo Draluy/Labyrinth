@@ -57,10 +57,9 @@ class Labyrinth {
      */
     hasCell(coords) {
         let found = false;
-        let cellSize = config.grid.cellSize;
         for (let i = 0; i < this.rooms.length && !found; i++) {
             let cell = this.rooms[i];
-            if (Math.floor(coords.x / cellSize) === cell.x && Math.floor(coords.y / cellSize) === cell.y) {
+            if (coords.x === cell.x && coords.y === cell.y) {
                 found = true;
             }
         }

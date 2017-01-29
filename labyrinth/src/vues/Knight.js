@@ -19,8 +19,7 @@ class Knight {
     get position() {
         return new Point(this.animation.x, this.animation.y);
     }
-}
-;
+};
 
 let spriteSheetDefinition = {
     images: [require("../assets/knight/GHKnight.png")],

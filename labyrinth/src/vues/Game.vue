@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import Stage from './Stage.js';
+import {Stage} from './Stage.js';
 import config from '../Config';
 import CanvasUtil from '../utils/CanvasUtil'
 
@@ -20,10 +20,10 @@ export  default {
         handleClick(event){
             //process input
             let canvas = document.querySelector("#game");
-            let {x,y} = CanvasUtil.getCorrectedCursorPosition(canvas, event);
+            let point = CanvasUtil.getCorrectedCursorPosition(canvas, event);
 
             //update
-            this.stage.updatePlayerPositionFromClick(x, y);
+            this.stage.updatePlayerPositionFromClick(point);
 
             //render
             this.stage.render();

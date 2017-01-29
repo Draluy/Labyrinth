@@ -11,7 +11,7 @@ import Point from "../models/Point";
 
 let player = new Knight();
 
-class Stage {
+export class Stage {
     constructor() {
         this.stage = new createjs.Stage("game");
 
@@ -28,18 +28,45 @@ class Stage {
         this.stage.update();
     }
 
-    updatePlayerPositionFromClick(mouseX, mouseY) {
-        let cellCoords = this.gridService.getCellCoords(mouseX, mouseY);
-        let coords = new Point(cellCoords.x * config.grid.cellSize, cellCoords.y * config.grid.cellSize);
-        let labSize = config.grid.nbCells * config.grid.cellSize;
+    updatePlayerPositionFromClick(point) {
+        //Get start cell
+        let cellCoords = this.gridService.getCellCoords(point.x, point.y);
+        let labSize = config.grid.nbCells;
 
-        if (coords.x < labSize && coords.y < labSize) { //check grid boundaries
-            if (this.gridService.cellIsNeighbouring(player.position, coords) && this.labyrinth.hasCell(coords)) {
-                player.position = new Point(coords.x, coords.y);
+        if (cellCoords.x < labSize && cellCoords.y < labSize) { //check grid boundaries
+            if (this.gridService.cellIsNeighbouring(player.position, cellCoords) && this.labyrinth.hasCell(cellCoords)) {
+                player.position = new Point(cellCoords.x * config.grid.cellSize, cellCoords.y * config.grid.cellSize);
             }
         }
 
     }
 }
 
-export default Stage;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

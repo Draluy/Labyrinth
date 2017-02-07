@@ -7,9 +7,10 @@ import GridService from "../services/GridService";
 import Knight from "./Knight.js";
 import config from "../Config";
 import Labyrinth from "../models/Labyrinth";
-import Point from "../models/Point";
+import {Point} from "../models/Point";
 
 let player = new Knight();
+let labyrinth = new Labyrinth();
 
 export class Stage {
     constructor() {
@@ -17,8 +18,8 @@ export class Stage {
 
         this.gridService = new GridService();
         this.gridService.drawGrid(this.stage);
-        this.labyrinth = new Labyrinth();
-        this.gridService.drawLabyrinth(this.stage, this.labyrinth);
+
+        this.gridService.drawLabyrinth(this.stage, labyrinth);
 
         this.stage.addChild(player.animation);
         this.stage.update();
@@ -28,17 +29,16 @@ export class Stage {
         this.stage.update();
     }
 
+    get player() {
+        return player;
+    }
+
+    get labyrinth() {
+        return labyrinth;
+    }
+
     updatePlayerPositionFromClick(point) {
-        //Get start cell
-        let cellCoords = this.gridService.getCellCoords(point.x, point.y);
-        let labSize = config.grid.nbCells;
-
-        if (cellCoords.x < labSize && cellCoords.y < labSize) { //check grid boundaries
-            if (this.gridService.cellIsNeighbouring(player.position, cellCoords) && this.labyrinth.hasCell(cellCoords)) {
-                player.position = new Point(cellCoords.x * config.grid.cellSize, cellCoords.y * config.grid.cellSize);
-            }
-        }
-
+        player.position = new Point(point.x * config.grid.cellSize, point.y * config.grid.cellSize);
     }
 }
 

@@ -12,14 +12,13 @@ export class FloodPathingService {
     findPath(start, end) {
         let S = new Set();
         let Q = [];
-
         start.parent = null;
         Q.push(start);
         S.add(start);
         while (Q.length > 0 ) {
             let current = Q.pop();
-            if (Object.is(current, end)) {
-                return current;
+            if (current.x === end.x && current.y === end.y) {
+                return constructPath(current);
             }
             for (let n of getAdjacentCells(current, this.labyrinth)){
                 if (!S.has(n)) {
@@ -32,6 +31,18 @@ export class FloodPathingService {
         }
         return null;
     }
+}
+
+function constructPath (endCell){
+
+    let path = [];
+    let curCell = endCell;
+    while (curCell.parent){
+        path.push(curCell);
+        curCell = curCell.parent;
+    }
+    path.push(curCell);
+    return path.reverse();
 }
 
 function getAdjacentCells(tile, labyrinth) {

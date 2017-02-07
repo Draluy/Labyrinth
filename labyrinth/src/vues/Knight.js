@@ -1,4 +1,4 @@
-import Point from "../models/Point"
+import {Point} from "../models/Point"
 
 class Knight {
     constructor() {

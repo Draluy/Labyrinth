@@ -2,7 +2,7 @@
  * Created by redeyed on 1/19/17.
  */
 
-import Point from "../models/Point"
+import {Point} from "../models/Point"
 
 class CanvasUtil{
     static getAbsoluteCursorPosition(canvas, event)

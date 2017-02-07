@@ -3,7 +3,7 @@
  */
 
 import config from '../Config'
-import Point from "../models/Point"
+import {Point} from "../models/Point"
 
 let nbCells = config.grid.nbCells;
 let cellSize = config.grid.cellSize;

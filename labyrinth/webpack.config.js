@@ -43,10 +43,6 @@ module.exports = {
                 options: {
                     name: '[name].[ext]?[hash]'
                 }
-            },
-            {
-                test: require.resolve('createjs-easeljs'),
-                loader: 'imports?this=>window!exports?window.createjs'
             }
 
         ]
